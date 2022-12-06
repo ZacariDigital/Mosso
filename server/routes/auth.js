@@ -6,7 +6,11 @@ router.get('/',(req,res)=>{
 })
 
 router.post('/signup',(req,res)=>{
-    console.log(req.body.name)
+    const {name,email,password} = req.body
+    if(!email || !password ||!name){
+        res.json({err:"please Input all the information"})
+    }
+    res.json({message:"successfully posted"})
 })
 
 module.exports = router
