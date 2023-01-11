@@ -7,16 +7,17 @@ const NavBar = ()=>{
     if(state){
       return[
         <li><Link to="/profile">Profile</Link></li>,
-        <li><Link to="/findsong">Find Song</Link></li>
+        <li><Link to="/findsong">Find Song</Link></li>,
+        <Link to={"/home"}className="brand-logo left">Mosso</Link>
+
 
       ]
 
     }else{
       return [
         <li><Link to="/login">Login</Link></li>,
-        <li><Link to="/signup">Signup</Link></li>,
-        <li><Link to="/profile">Profile</Link></li>,
-        <li><Link to="/findsong">Find Song</Link></li>
+        <li><Link to="/findsong">Find Song</Link></li>,
+
 
       ]
 
