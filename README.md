@@ -6,7 +6,7 @@ RUN BACK-END FIRST
 2. node app
 
 Start Front-End
-1.cd client
-2.npm start 
+1. cd client
+2. npm start 
 
 Make sure all the correct pakages are installed or fixed!
