@@ -1,11 +1,17 @@
 import React,{useState} from 'react'
-import {Link} from 'react-router-dom'
+import {Link,useNavigate} from 'react-router-dom'
+import M from 'materialize-css'
 
 const Signup = () =>{
+    const navigate= useNavigate()
     const [name,setName] = useState("")
     const [password,setPassword] = useState("")
     const [email,setEmail] = useState("")
     const PostData = ()=>{
+        if(!/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)){
+            M.toast({html:"invalid email"})
+            return
+        }
         fetch("http://localhost:5000/signup",{
             method:"post",
             headers:{
@@ -19,7 +25,14 @@ const Signup = () =>{
             })
         }).then(res=>res.json())
         .then(data=>{
-            console.log(data)
+            if(data.error){
+                M.toast({html:data.error})
+            }
+            else{
+                M.toast({html:data})
+                navigate('/login')
+            }
+
         })
     }
 
